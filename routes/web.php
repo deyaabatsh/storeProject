@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 
 Route::get('products', [ProductController::class, 'index']);
@@ -24,3 +25,7 @@ Route::get('/', [FrontController::class, 'index']);
 Route::get('/back', function () {
     return view('layouts.admin');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
